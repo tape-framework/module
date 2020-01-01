@@ -1,0 +1,7 @@
+{:tape.profile/base     [:tape/profile]
+ :tape.profile/dev      [:tape/profile]
+ :tape.profile/local    [:tape/profile]
+ :tape.profile/test     [:tape/profile]
+ :tape.profile/prod     [:tape/profile]
+ :tape.module/environment [:tape/const]
+ :tape.module/project-ns  [:tape/const]}

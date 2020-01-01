@@ -1,0 +1,3 @@
+{:bar/a {:x 1}
+ :bar/b #ig/ref :bar/a
+ :bar/c #tape/include "tape/nested.edn"}

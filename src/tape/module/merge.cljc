@@ -1,15 +1,19 @@
-(ns duct.core.merge
+(ns tape.module.merge
   (:refer-clojure :exclude [replace distinct?])
   (:require [clojure.set :as set]
             [clojure.walk :as walk]
             [integrant.core :as ig]))
+
+(defn- imeta? [val]
+  #?(:clj (instance? clojure.lang.IObj val)
+     :cljs (satisfies? IWithMeta val)))
 
 (defrecord WrapMeta [val])
 
 (defn wrap
   "If a value doesn't support metadata, wrap it in a record that does."
   [val]
-  (if (instance? clojure.lang.IObj val) val (->WrapMeta val)))
+  (if (imeta? val) val (->WrapMeta val)))
 
 (defn unwrap
   "Unwrap a value, if it is wrapped. Reverses the [[wrap]] function."
@@ -32,7 +36,7 @@
   (vary-meta (wrap val) assoc :replace true))
 
 (defn- meta* [obj]
-  (if (instance? clojure.lang.IObj obj) (meta obj)))
+  (if (imeta? obj) (meta obj)))
 
 (defn- displace? [obj]
   (-> obj meta* :displace))
