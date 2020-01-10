@@ -82,16 +82,16 @@
        (ig/prep))))
 
 (defn exec-config
-  "Build, prep and initiate a configuration of modules, then block the thread
-  (see [[await-daemons]]). By default it only runs profiles derived from
-  `:tape.profile/prod` and keys derived from `:tape/daemon`.
+  "Build, prep and initiate a configuration of modulesBy default it only runs
+  profiles derived from `:tape.profile/prod` and keys derived from
+  `:tape/main`.
 
   This function is designed to be called from `-main` when standalone operation
   is required."
   ([config]
    (exec-config config [:tape.profile/prod]))
   ([config profiles]
-   (exec-config config profiles [:tape/daemon]))
+   (exec-config config profiles [:tape/main]))
   ([config profiles keys]
    (-> config (prep-config profiles) (ig/init keys))))
 
