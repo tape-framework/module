@@ -1,2 +1,1 @@
-{:deps {integrant {:git/url "https://github.com/weavejester/integrant"
-                   :sha "ca8d6327708cf291f2f310d476124271fcbe0b89"}}}
+{:deps {integrant {}}}
