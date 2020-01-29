@@ -34,6 +34,31 @@ that transform a configuration map. There are two broad types: **profiles**,
 which merge their value into the configuration, and **modules**, which provide
 more complex manipulation.
 
+#### Usage
+
+Define a module:
+
+```clojure
+(ns my.module
+  (:require [integrant.code :as ig]
+            [tape.module :as module]))
+
+(defmethod ig/init-key ::module [_ _]
+  (fn [config]
+    (module/merge-configs config {:comp/one x, :comp/two y, ...})))
+```
+
+Use a module in a modules config map:
+
+```clojure
+(ns my.core
+  (:require [integrant.code :as ig]
+            [tape.module :as module]))
+
+(def config {:my.module/module nil, ... <other-modules>})
+(def system (-> config module/prep-config ig/init))
+```
+
 #### License
 
 Copyright © 2019 James Reeves, clyfe
