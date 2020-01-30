@@ -55,9 +55,14 @@ Use a module in a modules config map:
   (:require [integrant.code :as ig]
             [tape.module :as module]))
 
+(module/load-hierarchy)
 (def config {:my.module/module nil, ... <other-modules>})
 (def system (-> config module/prep-config ig/init))
 ```
+
+A `tape_hierarchy.edn` file in the root of the `src` directory can be used to
+define derivations for modules keys. Always use `(module/load-hierarchy)` as a
+first form in your entry point to execute all the derivations.
 
 #### License
 

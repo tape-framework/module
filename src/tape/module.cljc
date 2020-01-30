@@ -82,7 +82,7 @@
        (ig/prep))))
 
 (defn exec-config
-  "Build, prep and initiate a configuration of modulesBy default it only runs
+  "Build, prep and initiate a configuration of modules. By default it only runs
   profiles derived from `:tape.profile/prod` and keys derived from
   `:tape/main`.
 
