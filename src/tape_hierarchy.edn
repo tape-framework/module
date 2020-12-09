@@ -1,4 +1,5 @@
-{:tape.profile/base     [:tape/profile]
+{:tape/main             [:tape/const]
+ :tape.profile/base     [:tape/profile]
  :tape.profile/dev      [:tape/profile]
  :tape.profile/local    [:tape/profile]
  :tape.profile/test     [:tape/profile]
