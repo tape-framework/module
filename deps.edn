@@ -1,1 +1,1 @@
-{:deps {integrant {}}}
+{:deps {integrant/integrant {}}}
